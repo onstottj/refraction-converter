@@ -9,44 +9,44 @@ public class RefractionInputValidatorTest {
 
     @Test
     public void parseValidSpherePower() {
-        Assert.assertEquals(1.25, this.validator.parseSpherePower("1.25"), 0);
-        Assert.assertEquals(12, this.validator.parseSpherePower("12.00"), 0);
+        Assert.assertEquals(1.25, validator.parseSpherePower("1.25"), 0);
+        Assert.assertEquals(12, validator.parseSpherePower("12.00"), 0);
     }
 
     @Test(expected = NumberFormatException.class)
     public void parseInvalidSpherePower() {
-        this.validator.parseSpherePower("abc");
+        validator.parseSpherePower("abc");
     }
 
     @Test(expected = NumberFormatException.class)
     public void parseOutOfRangeSpherePower() {
-        this.validator.parseSpherePower("100");
+        validator.parseSpherePower("100");
     }
 
     @Test
     public void parseValidCylinderPower() {
-        Assert.assertEquals(0, this.validator.parseCylinderPower("0.00"), 0);
-        Assert.assertEquals(10, this.validator.parseCylinderPower("10.00"), 0);
+        Assert.assertEquals(0, validator.parseCylinderPower("0.00"), 0);
+        Assert.assertEquals(10, validator.parseCylinderPower("10.00"), 0);
     }
 
     @Test(expected = NumberFormatException.class)
     public void parseInvalidCylinderPower() {
-        this.validator.parseCylinderPower("abc");
+        validator.parseCylinderPower("abc");
     }
 
     @Test(expected = NumberFormatException.class)
     public void parseOutOfRangeCylinderPower() {
-        this.validator.parseCylinderPower("100");
+        validator.parseCylinderPower("100");
     }
 
     @Test
     public void parseValidAxis() {
-        Assert.assertEquals(70, this.validator.parseAxis("x070"));
+        Assert.assertEquals(70, validator.parseAxis("x070"));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void parseInvalidAxis() {
-        Assert.assertEquals(70, this.validator.parseAxis("070"));
+        Assert.assertEquals(70, validator.parseAxis("070"));
     }
 
     @Test

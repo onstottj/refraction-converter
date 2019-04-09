@@ -31,11 +31,15 @@ public class Refraction {
         return axis;
     }
 
+    public boolean isMinusCylinderNotation() {
+        return cylinderPower < 0;
+    }
+
     @Override
     public String toString() {
-        return sphereAndCylinderFormat.format(this.spherePower) + " "
-                + sphereAndCylinderFormat.format(this.cylinderPower) + " "
-                + axisFormat.format(this.axis);
+        return sphereAndCylinderFormat.format(spherePower) + " "
+                + sphereAndCylinderFormat.format(cylinderPower) + " "
+                + axisFormat.format(axis);
     }
 
 }
