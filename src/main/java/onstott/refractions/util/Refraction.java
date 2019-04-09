@@ -11,12 +11,12 @@ public class Refraction {
 
     private double spherePower;
     private double cylinderPower;
-    private double xAxis;
+    private int axis;
 
-    public Refraction(double spherePower, double cylinderPower, double xAxis) {
+    public Refraction(double spherePower, double cylinderPower, int axis) {
         this.spherePower = spherePower;
         this.cylinderPower = cylinderPower;
-        this.xAxis = xAxis;
+        this.axis = axis;
     }
 
     public double getSpherePower() {
@@ -27,15 +27,15 @@ public class Refraction {
         return cylinderPower;
     }
 
-    public double getxAxis() {
-        return xAxis;
+    public int getAxis() {
+        return axis;
     }
 
     @Override
     public String toString() {
         return sphereAndCylinderFormat.format(this.spherePower) + " "
                 + sphereAndCylinderFormat.format(this.cylinderPower) + " "
-                + axisFormat.format(this.xAxis);
+                + axisFormat.format(this.axis);
     }
 
 }

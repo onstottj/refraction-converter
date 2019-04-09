@@ -49,4 +49,11 @@ public class RefractionInputValidatorTest {
         Assert.assertEquals(70, this.validator.parseAxis("070"));
     }
 
+    @Test
+    public void testAxisStandardization() {
+        Assert.assertEquals(180, validator.standardizeAxis(0));
+        Assert.assertEquals(17, validator.standardizeAxis(197));
+        Assert.assertEquals(150, validator.standardizeAxis(-30));
+    }
+
 }

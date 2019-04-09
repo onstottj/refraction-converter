@@ -35,4 +35,16 @@ public class RefractionInputValidator {
         return Integer.parseInt(input.substring(1));
     }
 
+    /** Updates an Axis value so that it is in the correct range */
+    public int standardizeAxis(int input) {
+        int correctedValue = input;
+        while (correctedValue < 1) {
+            correctedValue += 180;
+        }
+        while (correctedValue > 180) {
+            correctedValue -= 180;
+        }
+        return correctedValue;
+    }
+
 }
