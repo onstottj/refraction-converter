@@ -3,7 +3,19 @@ package onstott.refractions.util;
 /* Class which converts user input to numeric values, if possible */
 public class RefractionInputValidator {
 
-    public double parseSpherePower(String input) {
+    public Refraction parseLine(String line) {
+        if (line.length() == 0) {
+            throw new IllegalArgumentException("Please enter a refraction value, like \"+0.50 -3.25 x070\"");
+        }
+        // Split by spaces but ignore multiple spaces; see https://stackoverflow.com/a/13081545/132374
+        String[] pieces = line.trim().split("\\s+");
+        if (pieces.length != 3) {
+            throw new IllegalArgumentException("Please enter a refraction value with sphere power, cylinder power, and axis");
+        }
+        return new Refraction(parseSpherePower(pieces[0]), parseCylinderPower(pieces[1]), parseAxis(pieces[2]));
+    }
+
+    double parseSpherePower(String input) {
         if (input.length() == 0) {
             throw new IllegalArgumentException("Please enter a value for Sphere power");
         }
@@ -14,7 +26,7 @@ public class RefractionInputValidator {
         return spherePower;
     }
 
-    public double parseCylinderPower(String input) {
+    double parseCylinderPower(String input) {
         if (input.length() == 0) {
             throw new IllegalArgumentException("Please enter a value for Cylinder power");
         }
@@ -25,7 +37,7 @@ public class RefractionInputValidator {
         return cylinderPower;
     }
 
-    public int parseAxis(String input) {
+    int parseAxis(String input) {
         if (input.length() == 0) {
             throw new IllegalArgumentException("Please enter a value for Axis");
         }
@@ -36,7 +48,7 @@ public class RefractionInputValidator {
     }
 
     /** Updates an Axis value so that it is in the correct range */
-    public int standardizeAxis(int input) {
+    int standardizeAxis(int input) {
         int correctedValue = input;
         while (correctedValue < 1) {
             correctedValue += 180;

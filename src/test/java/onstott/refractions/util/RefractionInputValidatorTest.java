@@ -8,6 +8,14 @@ public class RefractionInputValidatorTest {
     private RefractionInputValidator validator = new RefractionInputValidator();
 
     @Test
+    public void parseLineWithSpaces() {
+        Refraction refraction = validator.parseLine("  1.5  10  x070  ");
+        Assert.assertEquals(1.5, refraction.getSpherePower(), 0);
+        Assert.assertEquals(10, refraction.getCylinderPower(), 0);
+        Assert.assertEquals(70, refraction.getAxis());
+    }
+
+    @Test
     public void parseValidSpherePower() {
         Assert.assertEquals(1.25, validator.parseSpherePower("1.25"), 0);
         Assert.assertEquals(12, validator.parseSpherePower("12.00"), 0);
